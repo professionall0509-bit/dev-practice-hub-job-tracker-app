@@ -1,1 +1,35 @@
-Repo for job tracker app
+# 💼 AI Job Application & Mailbox Tracker
+
+An intelligent job application tracking system built with Python, Streamlit, Google Gemini API, and ChromaDB. The application automatically connects to your Gmail inbox, filters job-related communications, extracts status updates, and highlights pending actionable next steps using RAG and LLM classification.
+
+## 🌟 Key Features
+
+- **Automated Mailbox Scanning:** Connects to Gmail via IMAP and retrieves recent emails related to job applications.
+- **Rule-Based Pre-Filtering:** Filters out non-job emails (e.g., GitHub notifications, delivery status failures, security alerts) before LLM ingestion to optimize API usage.
+- **LLM Application Categorization:** Categorizes email statuses into `Applied`, `Action Required`, `Assessment Sent`, `Interview Scheduled`, `Offer Received`, or `Rejected`.
+- **Actionable Next Steps Extraction:** Automatically pulls specific task deadlines, interview details, or pending candidate forms.
+- **Resume RAG Integration:** Parses PDF resumes and stores contextual embeddings in ChromaDB to compare job postings against your skill background.
+- **Interactive Streamlit Dashboard:** Displays status metrics, real-time progress indicators, actionable dataframes, and detailed breakdown cards.
+
+## 🛠️ Tech Stack
+
+- **Frontend / Dashboard:** [Streamlit](https://streamlit.io/)
+- **LLM Engine:** [Google Gemini API](https://ai.google.dev/) (`gemini-3.8-flash`)
+- **Vector Storage / RAG:** [ChromaDB](https://www.trychroma.com/)
+- **Email Ingestion:** Python `imaplib` & `email`
+- **Language & Runtime:** Python 3.13
+
+## 📂 Project Structure
+
+```text
+job-application-tracker/
+├── .env                  # API keys and Gmail credentials (ignored by Git)
+├── .gitignore            # Git ignore file
+├── requirements.txt      # Project dependencies
+├── resume.pdf            # Candidate resume for RAG search
+├── src/
+│   ├── __init__.py
+│   ├── gmail_fetcher.py  # Email fetching & pre-filtering logic
+│   ├── rag_engine.py     # ChromaDB PDF parser & RAG retriever
+│   └── agent_system.py   # Gemini LLM analysis & fallback handler
+└── app.py                # Streamlit dashboard entry point

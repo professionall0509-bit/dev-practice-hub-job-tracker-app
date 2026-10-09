@@ -1,0 +1,21 @@
+# Python environment & cache
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Environment variables & secrets (CRITICAL: keeps passwords & API keys private)
+.env
+
+# Vector database cache
+chroma_db/
+
+# User specific resume files (if you want to keep your resume private)
+*.pdf
+
+# IDE and OS settings
+.vscode/
+.DS_Store
+Thumbs.db
